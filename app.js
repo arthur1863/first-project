@@ -1,17 +1,34 @@
-class User {
-  constructor(name, age, job) {
-    (this.name = name), (this.age = age), (this.job = job);
+class Animal {
+  constructor(name) {
+    this.speed = 0;
+    this.name = name;
   }
-
-  sayHi() {
-    alert(`${this.name} says hi and he is ${this.age} years old`);
+  run(speed) {
+    this.speed = speed;
+    alert(`${this.name} runs with speed ${this.speed}.`);
   }
-
-  sayJob() {
-    alert(`${this.name} workd as ${this.job}`);
+  stop() {
+    this.speed = 0;
+    alert(`${this.name} stands still.`);
   }
 }
 
-const user1 = new User("hamza baitiche", 30, "web developer");
+let animal = new Animal("My animal");
 
-console.log(Object.getOwnPropertyNames(User.prototype));
+class Rabbit extends Animal {
+  constructor(name, earLength) {
+    super(name);
+    this.earLength = earLength;
+  }
+  hide() {
+    alert(`${this.name} hides!`);
+  }
+
+  stop() {
+    super.stop();
+    this.hide();
+  }
+}
+
+let rabbit = new Rabbit("white rabbit", 10);
+console.log(rabbit.earLength);
